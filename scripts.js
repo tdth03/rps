@@ -29,7 +29,7 @@ selectionButtons.forEach(selectionButton => {
 })
 
 function makeSelection(selection) {
-    const computerSelection = randomSelection()
+    const computerSelection = randomSelection();
     const yourWinner = isWinner(selection, computerSelection);
     const computerWinner = isWinner(computerSelection, selection);
     
@@ -42,6 +42,9 @@ function makeSelection(selection) {
 
 function incrementScore(scoreSpan) {
     scoreSpan.innerText = parseInt(scoreSpan.innerText) + 1
+    if (yourScoreSpan === 10 || computerScoreSpan === 10) {
+        declareWinner();
+    }
 }
 
 function addSelectionResult(selection, winner) {
@@ -60,3 +63,31 @@ function randomSelection() {
     const randomIndex = Math.floor(Math.random() * SELECTIONS.length)
     return SELECTIONS[randomIndex]
 }
+
+let modal = document.createElement('div');
+modal.classList.add('game-results');
+
+let modalWinner = document.createElement('div');
+modalWinner.classList.add('game-winner');
+
+let closeBtn = document.createElement('span');
+closeBtn.classList.add('close');
+closeBtn.innerText = '>&times;';
+
+function declareWinner() {
+    
+
+    console.log(modal);
+    console.log(modalWinner);
+
+    closeBtn.onclick = function() {
+        modal.style.display = "none";
+      }
+      
+    window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+    }
+}
+finalWinner();
