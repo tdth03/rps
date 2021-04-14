@@ -26,7 +26,9 @@ selectionButtons.forEach(selectionButton => {
         const selectionName = selectionButton.dataset.selection;
         const selection = SELECTIONS.find(selection => selection.name === selectionName);
         makeSelection(selection);
-    })
+        console.log(selection.name);
+    });
+    
 })
 
 function makeSelection(selection) {
@@ -40,15 +42,18 @@ function makeSelection(selection) {
     if (yourWinner) incrementScore(yourScoreSpan);
     if (computerWinner) incrementScore(computerScoreSpan);
 
-    console.log("You selected " + selection +". Computer selected " + computerSelection + ".")
+    console.log(computerSelection.name);
 
-    if (yourScoreSpan.innerText === 5 || computerScoreSpan.innerText === 5) declareWinner();
+    console.log("You selected " + selection.name +". Computer selected " + computerSelection.name + ".")
+
+    
 }
 
 function incrementScore(scoreSpan) {
     scoreSpan.innerText = parseInt(scoreSpan.innerText) + 1
     console.log("Your score is " + yourScoreSpan.innerText);
     console.log("Computer score is " + computerScoreSpan.innerText);
+    if (yourScoreSpan.innerText === 5 || computerScoreSpan.innerText === 5) declareWinner();
 }
 
 function addSelectionResult(selection, winner) {
@@ -69,42 +74,27 @@ function randomSelection() {
 }
 
 
-function createModal() {
-    const modal = document.createElement('div');
-    modal.classList.add('game-results');
+function declareWinner() {
+    /* const modal = document.querySelector('.game-results');
+    const modalWinner = document.querySelector('.game-winner');
+    const closeBtn = document.getElementById('close');
+    const winnerText = document.querySelector('.win-text'); */
 
-    const modalWinner = document.createElement('div');
-    modalWinner.classList.add('game-winner');
+    if (playerScoreSpan.innerText > computerScoreSpan.innerText) {
+        /* modal.style.display = fixed; */
+        alert("Congratulations! You have won.");
+    } else {
+        /* modal.style.display = fixed; */
+        alert("You suck. You have failed us all.");
+    }
 
-    const closeBtn = document.createElement('span');
-    closeBtn.classList.add('close');
-    closeBtn.innerText = '>&times;';
-
-    const winnerText = document.createElement('p');
-    winnerText.classList.add('win-text');
-
-    modal.appendChild(body);
-    modalWinner.appendChild(modal);
-    closeBtn.appendChild(modalWinner);
-    winnerText.appendChild(modalWinner);
-
-    closeBtn.onclick = function() {
-        modal.style.display = "none";
+    /* closeBtn.onclick = function() {
+        modal.style.display = none;
       }
       
     window.onclick = function(event) {
         if (event.target == modal) {
           modal.style.display = "none";
         }
-    }
-}
-
-
-function declareWinner() {
-    createModal();
-    if (playerScoreSpan.innerText > computerScoreSpan.innerText) {
-        winnerText.innerText = "Congratulations! You have won.";
-    } else {
-        winnerText.innerText = "You suck. You have failed us all.";
-    } 
+    } */
 }
