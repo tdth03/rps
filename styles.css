@@ -13,7 +13,7 @@ body {
     outline: none;
     cursor: pointer;
     margin: .5rem;
-    font-size: 9rem;
+    font-size: 20vw;
     transition: 100ms;
 }
 
@@ -28,23 +28,23 @@ body {
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
     align-items: center;
-    font-size: 3rem;
+    font-size: 8vw;
 }
 
 .result-score {
     margin-left: .1rem;
-    font-size: 2rem;
+    font-size: 5vw;
     color: #333;
 }
 
 .result-selection {
     opacity: .5;
-    font-size: 5rem;
+    font-size: 10vw;
 }
 
 .result-selection.winner {
     opacity: 1;
-    font-size: 7rem;
+    font-size: 15vw;
 }
 
 .game-results {
@@ -76,7 +76,7 @@ body {
 
   .win-text {
       text-align: center;
-      font-size: 50px;
+      font-size: 5vw;
       margin: auto;
       color:#333;
   }
