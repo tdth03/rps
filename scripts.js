@@ -81,9 +81,11 @@ function incrementScore(scoreSpan) {
     scoreSpan.innerText = parseInt(scoreSpan.innerText, 10) + 1
 }
 
+
+let div;
 /* Add results to page, adding classes to include CSS styling. */
 function addSelectionResult(selection, winner) {
-    const div = document.createElement('div')
+    div = document.createElement('div')
     div.innerText = selection.emoji
     div.classList.add('result-selection')
     if (winner) div.classList.add('winner')
@@ -104,17 +106,16 @@ function declareWinner() {
 
     selectionButtons.forEach((selection) => {
         selection.classList.add('end-game');
-        selection.classList.remove('selection:hover');
         selection.setAttribute('disabled', '');
     });
 
     closeBtn.onclick = function() {
         modal.style.display = "none";
+        resetGame();
       }
-      
-    window.onclick = function(event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-    }
+}
+
+/* Reset Game After Closing Results Modal */
+function resetGame() {
+    window.location.reload();
 }
